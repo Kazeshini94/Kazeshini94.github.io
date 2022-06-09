@@ -1,0 +1,10 @@
+package zählerschleife;
+
+public class Zählerschleife {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

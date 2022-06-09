@@ -1,0 +1,20 @@
+INDEX VERSION 1.131+C:\Users\Domink\try\.metadata\.plugins\org.eclipse.jdt.core
+2012974473.index
+4188127168.index
+730706845.index
+2255558868.index
+3050210405.index
+2804105715.index
+1865797976.index
+275894677.index
+667795460.index
+2888110583.index
+1167275426.index
+778069775.index
+3173595447.index
+4163541083.index
+54703828.index
+86589111.index
+19329054.index
+4206711308.index
+966851747.index

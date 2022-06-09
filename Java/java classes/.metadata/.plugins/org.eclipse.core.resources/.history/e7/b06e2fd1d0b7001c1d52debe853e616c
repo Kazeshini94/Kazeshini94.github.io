@@ -1,0 +1,14 @@
+package arrays;
+
+public class Arrays {
+
+	public static void main(String[] args) {
+		                                                // Arrays sind ähnlich wie Variablen
+		String test = "Hendrik"; "Paul";               // Bei einer Variablen ist es nicht möglich mehrere Werte zu speichern
+		     System.out.println(test);                // Dafür gibt es Arrays, diese sind Datenstrukturen die mehrere Werte beinhalten können
+		                                             // Der Zugriff auf diese Werte erfolgt über einen Index
+
+		String[] names = new String [3];
+	}
+
+}

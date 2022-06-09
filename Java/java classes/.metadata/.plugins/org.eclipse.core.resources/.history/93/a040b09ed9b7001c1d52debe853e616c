@@ -1,0 +1,40 @@
+package foreach;
+
+public class Foreach {
+
+	public static void main(String[] args) {
+		
+		// Schleifentyp, um Datenstrukturen (Arrays) schrittweise zu durchlaufen
+        // Speichert bei jedem Durchlauf eine Kopie des aktuellen Wertes der Datenstruktur in einer Variable, 
+		// welche man im Schleifenkörper wiederverwenden kann
+		// Wichtig!! NUR lesender Zugriff möglich!
+		
+		/*
+		String[] names = new String [4];            
+	         
+		names[0] = "Hendrik";                        
+	    names[1] = "Paul";                        
+	    names[2] = "Fabienne";                        
+	    
+	    System.out.println(names[2]);
+	    */                                
+	    
+		String[] names =  {"Hendrik", "Paul","Fabienne"};
+		
+		for(int i = 0; i < names.length; i++) {  
+			System.out.println(names[i]);         
+			                                      
+		}
+		
+		for(String name : names) {                 // foreach-Schleife gibt das selbe wie die for-schleife darüber wieder
+			names = "test";                  // Die Variable names ist jedoch nicht veränderbar da diese Schleife rein zum Auslesen benützt wird 
+		}
+		
+		for(int i = 0; i < names.length; i++) {  
+			System.out.println(names[i]);         
+			                                      
+		}
+	
+  
+	}
+}

@@ -1,0 +1,18 @@
+package schleifen;
+
+public class Schleifen {
+
+	public static void main(String[] args) {
+		
+		int number = 1;                      //Besonderheit der While-Schleife = Kopfgesteuerte Schleife 
+		                                     //Das Programm fängt immer bei while(number <=5) {  an 
+		
+		while(number <= 10) {                 // Solange das Ergebnis true ist  wird der Code Block {} ausgeführt 
+			System.out.println(number);      // While-schleifen laufen solange bis das Ergebnis false ist und sind Boolesche Anfragen
+			number += 1;                     //  ist eine Kurzschreibweise von  Number = Number + 1  (number++; funktioniert nur bei 1) 
+			
+		}                                            
+
+	}
+
+}

@@ -1,0 +1,13 @@
+package variables;
+
+public class variables {
+
+	public static void main(String[] args) {
+
+         int test = 32;
+         System.out.println(test);
+     
+
+	}
+
+}

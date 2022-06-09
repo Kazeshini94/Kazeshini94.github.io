@@ -1,0 +1,18 @@
+package konstruktor;
+
+public class Konstruktor {
+
+	public static void main(String[] args) {
+		
+		// Der Konstruktor ist IMMER die erste Methode, die beim instanziieren eines Objektes aufgerufen wird
+		// Er wird meistens dazu verwendet, um Attribute zu initialisieren (bereitet ein Objekt vor)
+		// Aufgabe des Konstruktors: Objekt konstruieren (erstellen) 
+		// Jede Klasse hat einen Konstruktor
+
+		Car car1 = new Car("Grün", "VW", 130);         // Instanziierung eines Objekts
+        car1.drive();                // new "Car"   
+        
+        
+	}
+
+}

@@ -1,0 +1,28 @@
+package arrays;
+
+public class Arrays {
+
+	public static void main(String[] args) {
+		/*                                              // Arrays sind ähnlich wie Variablen
+		String test = "Hendrik", "paul";               // Bei einer Variablen ist es nicht möglich mehrere Werte zu speichern
+		     System.out.println(test);                // Dafür gibt es Arrays, diese sind Datenstrukturen die mehrere Werte beinhalten können
+		*/                                           // Der Zugriff auf diese Werte erfolgt über einen Index
+        
+		String[] names = new String [3];            // Die Größe eines Arrays wird immer bei der Initialisierung festgelegt
+	         
+		names[0] = "Hendrik";                       // Beim Programmieren wird beim Zählen immer von 0 weg gezählt!  
+	    names[1] = "Paul";                        
+	    names[2] = "Fabienne";                      // New String 3 bestimmt die maximale Größe  auf 3 Variablen die abgespeichert werden können  
+	    /*
+	    System.out.println(names[2]);
+	    */                                // /* */  ermöglicht das auskommentieren von codezeilen somit werden sie im Programm nicht berücksichtigt
+	    
+	    
+		
+		for(int i = 0; i < names.length; i++) {   // .lenght = ein String Attribut  / names 3 wäre ebenso valide gewesen jedoch sehr umständlich
+			System.out.println(names[i]);         // names.lenght hat den Vorteil immer das Ganze Array zu zählen (the whole lenght) 
+			                                      // In diesem Beispiel verwenden wir eine for-Schleife um alle Variablen des Array wiederzugeben.
+		}
+	}
+
+}
