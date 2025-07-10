@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="de">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>DevGamer Portfolio</title>
+		<style>
+			@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&display=swap");
+
+			:root {
+				--bg-dark: #0a0a0a;
+				--bg-secondary: #1a1a1a;
+				--neon-green: #00ff41;
+				--neon-blue: #00d4ff;
+				--neon-purple: #b300ff;
+				--neon-pink: #ff0080;
+				--text-primary: #ffffff;
+				--text-secondary: #cccccc;
+				--text-muted: #888888;
+			}
+
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family: "Fira Code", monospace;
+				background: var(--bg-dark);
+				color: var(--text-primary);
+				line-height: 1.6;
+				overflow-x: hidden;
+			}
+
+			/* Animated Background */
+			.bg-matrix {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				pointer-events: none;
+				z-index: -1;
+			}
+
+			.matrix-line {
+				position: absolute;
+				width: 2px;
+				height: 100px;
+				background: linear-gradient(
+					to bottom,
+					transparent,
+					var(--neon-green),
+					transparent
+				);
+				animation: matrix-fall 3s linear infinite;
+			}
+
+			@keyframes matrix-fall {
+				0% {
+					transform: translateY(-100px);
+					opacity: 0;
+				}
+				50% {
+					opacity: 1;
+				}
+				100% {
+					transform: translateY(100vh);
+					opacity: 0;
+				}
+			}
+
+			/* Header */
+			.header {
+				position: fixed;
+				top: 0;
+				width: 100%;
+				background: rgba(26, 26, 26, 0.95);
+				backdrop-filter: blur(10px);
+				border-bottom: 1px solid var(--neon-green);
+				z-index: 1000;
+			}
+
+			.nav {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding: 1rem 2rem;
+			}
+
+			.logo {
+				font-size: 1.5rem;
+				font-weight: 600;
+				color: var(--neon-green);
+				text-shadow: 0 0 10px var(--neon-green);
+			}
+
+			.nav-links {
+				display: flex;
+				gap: 2rem;
+			}
+
+			.nav-links a {
+				color: var(--text-secondary);
+				text-decoration: none;
+				transition: all 0.3s ease;
+				position: relative;
+			}
+
+			.nav-links a:hover {
+				color: var(--neon-green);
+				text-shadow: 0 0 5px var(--neon-green);
+			}
+
+			.nav-links a::after {
+				content: "";
+				position: absolute;
+				bottom: -5px;
+				left: 0;
+				width: 0;
+				height: 2px;
+				background: var(--neon-green);
+				transition: width 0.3s ease;
+			}
+
+			.nav-links a:hover::after {
+				width: 100%;
+			}
+
+			/* Main Content */
+			.container {
+				max-width: 1200px;
+				margin: 0 auto;
+				padding: 0 2rem;
+			}
+
+			.section {
+				min-height: 100vh;
+				padding: 5rem 0;
+				display: flex;
+				align-items: center;
+			}
+
+			/* Hero Section */
+			.hero {
+				text-align: center;
+				position: relative;
+			}
+
+			.ascii-art {
+				font-size: 0.8rem;
+				color: var(--neon-green);
+				white-space: pre;
+				margin-bottom: 2rem;
+				text-shadow: 0 0 5px var(--neon-green);
+			}
+
+			.glitch {
+				font-size: 3rem;
+				font-weight: 600;
+				margin-bottom: 1rem;
+				position: relative;
+				animation: glitch 3s infinite;
+			}
+
+			.glitch::before,
+			.glitch::after {
+				content: attr(data-text);
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+			}
+
+			.glitch::before {
+				animation: glitch-1 0.5s infinite;
+				color: var(--neon-pink);
+				z-index: -1;
+			}
+
+			.glitch::after {
+				animation: glitch-2 0.5s infinite;
+				color: var(--neon-blue);
+				z-index: -2;
+			}
+
+			@keyframes glitch {
+				0%,
+				100% {
+					transform: translate(0);
+				}
+				20% {
+					transform: translate(-2px, 2px);
+				}
+				40% {
+					transform: translate(-2px, -2px);
+				}
+				60% {
+					transform: translate(2px, 2px);
+				}
+				80% {
+					transform: translate(2px, -2px);
+				}
+			}
+
+			@keyframes glitch-1 {
+				0%,
+				100% {
+					transform: translate(0);
+				}
+				20% {
+					transform: translate(-2px, 2px);
+				}
+				40% {
+					transform: translate(-2px, -2px);
+				}
+				60% {
+					transform: translate(2px, 2px);
+				}
+				80% {
+					transform: translate(2px, -2px);
+				}
+			}
+
+			@keyframes glitch-2 {
+				0%,
+				100% {
+					transform: translate(0);
+				}
+				20% {
+					transform: translate(2px, -2px);
+				}
+				40% {
+					transform: translate(2px, 2px);
+				}
+				60% {
+					transform: translate(-2px, -2px);
+				}
+				80% {
+					transform: translate(-2px, 2px);
+				}
+			}
+
+			.typing-text {
+				font-size: 1.2rem;
+				color: var(--text-secondary);
+				margin-bottom: 2rem;
+				overflow: hidden;
+				border-right: 3px solid var(--neon-green);
+				white-space: nowrap;
+				animation: typing 3s steps(40, end),
+					blink-cursor 0.5s step-end infinite;
+			}
+
+			@keyframes typing {
+				from {
+					width: 0;
+				}
+				to {
+					width: 100%;
+				}
+			}
+
+			@keyframes blink-cursor {
+				from,
+				to {
+					border-color: transparent;
+				}
+				50% {
+					border-color: var(--neon-green);
+				}
+			}
+
+			/* Terminal Window */
+			.terminal {
+				background: var(--bg-secondary);
+				border: 1px solid var(--neon-green);
+				border-radius: 10px;
+				margin: 2rem 0;
+				box-shadow: 0 0 20px rgba(0, 255, 65, 0.3);
+			}
+
+			.terminal-header {
+				background: var(--bg-dark);
+				padding: 1rem;
+				border-bottom: 1px solid var(--neon-green);
+				display: flex;
+				align-items: center;
+				gap: 1rem;
+			}
+
+			.terminal-buttons {
+				display: flex;
+				gap: 0.5rem;
+			}
+
+			.terminal-button {
+				width: 12px;
+				height: 12px;
+				border-radius: 50%;
+			}
+
+			.terminal-button.close {
+				background: #ff5f56;
+			}
+			.terminal-button.minimize {
+				background: #ffbd2e;
+			}
+			.terminal-button.maximize {
+				background: #27ca3f;
+			}
+
+			.terminal-title {
+				color: var(--text-secondary);
+				font-size: 0.9rem;
+			}
+
+			.terminal-content {
+				padding: 1.5rem;
+				font-size: 0.9rem;
+			}
+
+			.terminal-line {
+				margin-bottom: 0.5rem;
+				opacity: 0;
+				animation: fadeInUp 0.5s ease forwards;
+			}
+
+			.terminal-line:nth-child(1) {
+				animation-delay: 0.5s;
+			}
+			.terminal-line:nth-child(2) {
+				animation-delay: 1s;
+			}
+			.terminal-line:nth-child(3) {
+				animation-delay: 1.5s;
+			}
+			.terminal-line:nth-child(4) {
+				animation-delay: 2s;
+			}
+			.terminal-line:nth-child(5) {
+				animation-delay: 2.5s;
+			}
+
+			@keyframes fadeInUp {
+				from {
+					opacity: 0;
+					transform: translateY(20px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+
+			.prompt {
+				color: var(--neon-green);
+			}
+
+			.command {
+				color: var(--neon-blue);
+			}
+
+			.output {
+				color: var(--text-secondary);
+				margin-left: 2rem;
+			}
+
+			/* Skills Section */
+			.skills-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+				gap: 2rem;
+				margin-top: 2rem;
+			}
+
+			.skill-category {
+				background: var(--bg-secondary);
+				border: 1px solid var(--neon-blue);
+				border-radius: 10px;
+				padding: 2rem;
+				position: relative;
+				overflow: hidden;
+			}
+
+			.skill-category::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				height: 3px;
+				background: linear-gradient(
+					90deg,
+					var(--neon-blue),
+					var(--neon-purple),
+					var(--neon-pink)
+				);
+				animation: rainbow-slide 3s linear infinite;
+			}
+
+			@keyframes rainbow-slide {
+				0% {
+					transform: translateX(-100%);
+				}
+				100% {
+					transform: translateX(100%);
+				}
+			}
+
+			.skill-title {
+				color: var(--neon-blue);
+				font-size: 1.3rem;
+				margin-bottom: 1rem;
+				text-shadow: 0 0 5px var(--neon-blue);
+			}
+
+			.skill-item {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-bottom: 1rem;
+			}
+
+			.skill-name {
+				color: var(--text-primary);
+			}
+
+			.skill-level {
+				width: 100px;
+				height: 6px;
+				background: var(--bg-dark);
+				border-radius: 3px;
+				position: relative;
+				overflow: hidden;
+			}
+
+			.skill-progress {
+				height: 100%;
+				background: linear-gradient(
+					90deg,
+					var(--neon-green),
+					var(--neon-blue)
+				);
+				border-radius: 3px;
+				animation: skill-fill 2s ease-in-out forwards;
+				transform-origin: left;
+			}
+
+			@keyframes skill-fill {
+				from {
+					transform: scaleX(0);
+				}
+				to {
+					transform: scaleX(1);
+				}
+			}
+
+			.skill-progress.level-90 {
+				width: 90%;
+			}
+			.skill-progress.level-85 {
+				width: 85%;
+			}
+			.skill-progress.level-80 {
+				width: 80%;
+			}
+			.skill-progress.level-75 {
+				width: 75%;
+			}
+			.skill-progress.level-70 {
+				width: 70%;
+			}
+
+			/* Projects Section */
+			.projects-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+				gap: 2rem;
+				margin-top: 2rem;
+			}
+
+			.project-card {
+				background: var(--bg-secondary);
+				border: 1px solid var(--neon-purple);
+				border-radius: 10px;
+				padding: 2rem;
+				position: relative;
+				transition: all 0.3s ease;
+				cursor: pointer;
+			}
+
+			.project-card:hover {
+				transform: translateY(-5px);
+				box-shadow: 0 10px 25px rgba(179, 0, 255, 0.3);
+			}
+
+			.project-title {
+				color: var(--neon-purple);
+				font-size: 1.2rem;
+				margin-bottom: 1rem;
+				text-shadow: 0 0 5px var(--neon-purple);
+			}
+
+			.project-tech {
+				display: flex;
+				gap: 0.5rem;
+				margin-bottom: 1rem;
+				flex-wrap: wrap;
+			}
+
+			.tech-tag {
+				background: var(--bg-dark);
+				color: var(--text-secondary);
+				padding: 0.2rem 0.8rem;
+				border-radius: 15px;
+				font-size: 0.8rem;
+				border: 1px solid var(--neon-green);
+			}
+
+			.project-description {
+				color: var(--text-secondary);
+				line-height: 1.6;
+			}
+
+			/* Contact Section */
+			.contact-info {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+				gap: 2rem;
+				margin-top: 2rem;
+			}
+
+			.contact-item {
+				background: var(--bg-secondary);
+				border: 1px solid var(--neon-pink);
+				border-radius: 10px;
+				padding: 1.5rem;
+				text-align: center;
+				transition: all 0.3s ease;
+			}
+
+			.contact-item:hover {
+				transform: scale(1.05);
+				box-shadow: 0 5px 15px rgba(255, 0, 128, 0.3);
+			}
+
+			.contact-icon {
+				font-size: 2rem;
+				color: var(--neon-pink);
+				margin-bottom: 1rem;
+				text-shadow: 0 0 10px var(--neon-pink);
+			}
+
+			.contact-text {
+				color: var(--text-primary);
+				text-decoration: none;
+			}
+
+			.contact-text:hover {
+				color: var(--neon-pink);
+			}
+
+			/* Responsive Design */
+			@media (max-width: 768px) {
+				.nav {
+					flex-direction: column;
+					gap: 1rem;
+				}
+
+				.nav-links {
+					gap: 1rem;
+				}
+
+				.glitch {
+					font-size: 2rem;
+				}
+
+				.typing-text {
+					font-size: 1rem;
+				}
+
+				.ascii-art {
+					font-size: 0.6rem;
+				}
+
+				.section {
+					padding: 3rem 0;
+				}
+			}
+
+			/* Scrollbar Styling */
+			::-webkit-scrollbar {
+				width: 8px;
+			}
+
+			::-webkit-scrollbar-track {
+				background: var(--bg-dark);
+			}
+
+			::-webkit-scrollbar-thumb {
+				background: var(--neon-green);
+				border-radius: 4px;
+			}
+
+			::-webkit-scrollbar-thumb:hover {
+				background: var(--neon-blue);
+			}
+
+			/* Section Titles */
+			.section-title {
+				font-size: 2.5rem;
+				color: var(--neon-green);
+				text-align: center;
+				margin-bottom: 3rem;
+				text-shadow: 0 0 10px var(--neon-green);
+				position: relative;
+			}
+
+			.section-title::after {
+				content: "";
+				position: absolute;
+				bottom: -10px;
+				left: 50%;
+				transform: translateX(-50%);
+				width: 100px;
+				height: 3px;
+				background: linear-gradient(
+					90deg,
+					var(--neon-green),
+					var(--neon-blue)
+				);
+			}
+		</style>
+	</head>
+	<body>
+		<div
+			class="bg-matrix"
+			id="matrix-bg"
+		></div>
+
+		<header class="header">
+			<nav class="nav">
+				<div class="logo">{"DEV_GAMER"}</div>
+				<div class="nav-links">
+					<a href="#home">Home</a>
+					<a href="#skills">Skills</a>
+					<a href="#projects">Projects</a>
+					<a href="#contact">Contact</a>
+				</div>
+			</nav>
+		</header>
+
+		<main>
+			<section
+				id="home"
+				class="section hero"
+			>
+				<div class="container">
+					<div class="ascii-art">
+						████████╗██╗ ██╗███████╗ ██████╗ ███████╗██╗ ██╗
+						╚══██╔══╝██║ ██║██╔════╝ ██╔══██╗██╔════╝██║ ██║ ██║
+						███████║█████╗ ██║ ██║█████╗ ██║ ██║ ██║ ██╔══██║██╔══╝
+						██║ ██║██╔══╝ ╚██╗ ██╔╝ ██║ ██║ ██║███████╗
+						██████╔╝███████╗ ╚████╔╝ ╚═╝ ╚═╝ ╚═╝╚══════╝ ╚═════╝
+						╚══════╝ ╚═══╝
+					</div>
+					<h1
+						class="glitch"
+						data-text="SENIOR DEVELOPER"
+					>
+						SENIOR DEVELOPER
+					</h1>
+					<p class="typing-text">
+						System.out.println("Welcome to my digital realm");
+					</p>
+
+					<div class="terminal">
+						<div class="terminal-header">
+							<div class="terminal-buttons">
+								<div class="terminal-button close"></div>
+								<div class="terminal-button minimize"></div>
+								<div class="terminal-button maximize"></div>
+							</div>
+							<div class="terminal-title">
+								developer@machine:~$
+							</div>
+						</div>
+						<div class="terminal-content">
+							<div class="terminal-line">
+								<span class="prompt">user@dev:~$</span>
+								<span class="command">whoami</span>
+							</div>
+							<div class="terminal-line">
+								<span class="output"
+									>Senior Developer | Problem Solver | Code
+									Architect</span
+								>
+							</div>
+							<div class="terminal-line">
+								<span class="prompt">user@dev:~$</span>
+								<span class="command">cat experience.txt</span>
+							</div>
+							<div class="terminal-line">
+								<span class="output"
+									>Years of coding | Multiple languages |
+									Scalable solutions</span
+								>
+							</div>
+							<div class="terminal-line">
+								<span class="prompt">user@dev:~$</span>
+								<span class="command"
+									>./start_adventure.sh</span
+								>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section
+				id="skills"
+				class="section"
+			>
+				<div class="container">
+					<h2 class="section-title">SKILL_TREE</h2>
+					<div class="skills-grid">
+						<div class="skill-category">
+							<h3 class="skill-title">Backend Development</h3>
+							<div class="skill-item">
+								<span class="skill-name">Java</span>
+								<div class="skill-level">
+									<div class="skill-progress level-90"></div>
+								</div>
+							</div>
+							<div class="skill-item">
+								<span class="skill-name">Python</span>
+								<div class="skill-level">
+									<div class="skill-progress level-85"></div>
+								</div>
+							</div>
+							<div class="skill-item">
+								<span class="skill-name">Node.js</span>
+								<div class="skill-level">
+									<div class="skill-progress level-80"></div>
+								</div>
+							</div>
+							<div class="skill-item">
+								<span class="skill-name">C#</span>
+								<div class="skill-level">
+									<div class="skill-progress level-75"></div>
+								</div>
+							</div>
+						</div>
+
+						<div class="skill-category">
+							<h3 class="skill-title">Frontend Development</h3>
+							<div class="skill-item">
+								<span class="skill-name">JavaScript</span>
+								<div class="skill-level">
+									<div class="skill-progress level-90"></div>
+								</div>
+							</div>
+							<div class="skill-item">
+								<span class="skill-name">React</span>
+								<div class="skill-level">
+									<div class="skill-progress level-85"></div>
+								</div>
+							</div>
+							<div class="skill-item">
+								<span class="skill-name">Vue.js</span>
+								<div class="skill-level">
+									<div class="skill-progress level-80"></div>
+								</div>
+							</div>
+							<div class="skill-item">
+								<span class="skill-name">TypeScript</span>
+								<div class="skill-level">
+									<div class="skill-progress level-85"></div>
+								</div>
+							</div>
+						</div>
+
+						<div class="skill-category">
+							<h3 class="skill-title">Database & DevOps</h3>
+							<div class="skill-item">
+								<span class="skill-name">PostgreSQL</span>
+								<div class="skill-level">
+									<div class="skill-progress level-85"></div>
+								</div>
+							</div>
+							<div class="skill-item">
+								<span class="skill-name">MongoDB</span>
+								<div class="skill-level">
+									<div class="skill-progress level-80"></div>
+								</div>
+							</div>
+							<div class="skill-item">
+								<span class="skill-name">Docker</span>
+								<div class="skill-level">
+									<div class="skill-progress level-75"></div>
+								</div>
+							</div>
+							<div class="skill-item">
+								<span class="skill-name">AWS</span>
+								<div class="skill-level">
+									<div class="skill-progress level-70"></div>
+								</div>
+							</div>
+						</div>
+
+						<div class="skill-category">
+							<h3 class="skill-title">Game Development</h3>
+							<div class="skill-item">
+								<span class="skill-name">Unity</span>
+								<div class="skill-level">
+									<div class="skill-progress level-80"></div>
+								</div>
+							</div>
+							<div class="skill-item">
+								<span class="skill-name">Unreal Engine</span>
+								<div class="skill-level">
+									<div class="skill-progress level-70"></div>
+								</div>
+							</div>
+							<div class="skill-item">
+								<span class="skill-name">Godot</span>
+								<div class="skill-level">
+									<div class="skill-progress level-75"></div>
+								</div>
+							</div>
+							<div class="skill-item">
+								<span class="skill-name">OpenGL</span>
+								<div class="skill-level">
+									<div class="skill-progress level-70"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section
+				id="projects"
+				class="section"
+			>
+				<div class="container">
+					<h2 class="section-title">PROJECTS.EXE</h2>
+					<div class="projects-grid">
+						<div class="project-card">
+							<h3 class="project-title">
+								Microservice Architecture
+							</h3>
+							<div class="project-tech">
+								<span class="tech-tag">Java</span>
+								<span class="tech-tag">Spring Boot</span>
+								<span class="tech-tag">Docker</span>
+								<span class="tech-tag">PostgreSQL</span>
+							</div>
+							<p class="project-description">
+								Scalable microservice architecture with service
+								discovery, load balancing, and distributed
+								tracing. Handles 10k+ concurrent users with
+								99.9% uptime.
+							</p>
+						</div>
+
+						<div class="project-card">
+							<h3 class="project-title">
+								Real-time Gaming Platform
+							</h3>
+							<div class="project-tech">
+								<span class="tech-tag">Node.js</span>
+								<span class="tech-tag">Socket.io</span>
+								<span class="tech-tag">React</span>
+								<span class="tech-tag">Redis</span>
+							</div>
+							<p class="project-description">
+								Multiplayer gaming platform with real-time
+								communication, matchmaking system, and player
+								statistics. Supports 1000+ concurrent matches.
+							</p>
+						</div>
+
+						<div class="project-card">
+							<h3 class="project-title">AI Code Assistant</h3>
+							<div class="project-tech">
+								<span class="tech-tag">Python</span>
+								<span class="tech-tag">TensorFlow</span>
+								<span class="tech-tag">FastAPI</span>
+								<span class="tech-tag">Docker</span>
+							</div>
+							<p class="project-description">
+								ML-powered code assistant that helps developers
+								write better code. Uses transformer models for
+								code completion and bug detection.
+							</p>
+						</div>
+
+						<div class="project-card">
+							<h3 class="project-title">Blockchain Analytics</h3>
+							<div class="project-tech">
+								<span class="tech-tag">Rust</span>
+								<span class="tech-tag">Web3</span>
+								<span class="tech-tag">GraphQL</span>
+								<span class="tech-tag">PostgreSQL</span>
+							</div>
+							<p class="project-description">
+								High-performance blockchain data indexer and
+								analytics platform. Processes millions of
+								transactions daily with sub-second query
+								response times.
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section
+				id="contact"
+				class="section"
+			>
+				<div class="container">
+					<h2 class="section-title">CONNECT.SH</h2>
+					<div class="contact-info">
+						<div class="contact-item">
+							<div class="contact-icon">📧</div>
+							<a
+								href="mailto:dev@example.com"
+								class="contact-text"
+								>dev@example.com</a
+							>
+						</div>
+						<div class="contact-item">
+							<div class="contact-icon">🐙</div>
+							<a
+								href="https://github.com/username"
+								class="contact-text"
+								>github.com/username</a
+							>
+						</div>
+						<div class="contact-item">
+							<div class="contact-icon">💼</div>
+							<a
+								href="https://linkedin.com/in/username"
+								class="contact-text"
+								>LinkedIn Profile</a
+							>
+						</div>
+						<div class="contact-item">
+							<div class="contact-icon">🎮</div>
+							<a
+								href="https://discord.gg/username"
+								class="contact-text"
+								>Discord Server</a
+							>
+						</div>
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<script>
+			// Matrix Rain Effect
+			function createMatrix() {
+				const matrixContainer = document.getElementById("matrix-bg");
+				const numberOfLines = 50;
+
+				for (let i = 0; i < numberOfLines; i++) {
+					const line = document.createElement("div");
+					line.className = "matrix-line";
+					line.style.left = Math.random() * 100 + "%";
+					line.style.animationDelay = Math.random() * 3 + "s";
+					line.style.animationDuration = Math.random() * 3 + 2 + "s";
+					matrixContainer.appendChild(line);
+				}
+			}
+
+			// Smooth scrolling for navigation
+			document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+				anchor.addEventListener("click", function (e) {
+					e.preventDefault();
+					const target = document.querySelector(
+						this.getAttribute("href")
+					);
+					if (target) {
+						target.scrollIntoView({
+							behavior: "smooth",
+							block: "start",
+						});
+					}
+				});
+			});
+
+			// Initialize matrix effect
+			createMatrix();
+
+			// Intersection Observer for skill animations
+			const skillObserver = new IntersectionObserver(
+				(entries) => {
+					entries.forEach((entry) => {
+						if (entry.isIntersecting) {
+							entry.target.style.animationPlayState = "running";
+						}
+					});
+				},
+				{ threshold: 0.5 }
+			);
+
+			document.querySelectorAll(".skill-progress").forEach((skill) => {
+				skill.style.animationPlayState = "paused";
+				skillObserver.observe(skill);
+			});
+
+			// Terminal typing effect
+			const terminalLines = document.querySelectorAll(".terminal-line");
+			terminalLines.forEach((line, index) => {
+				line.style.animationDelay = index * 0.5 + "s";
+			});
+
+			// Project card hover effects
+			document.querySelectorAll(".project-card").forEach((card) => {
+				card.addEventListener("mouseenter", function () {
+					this.style.transform = "translateY(-5px) scale(1.02)";
+				});
+
+				card.addEventListener("mouseleave", function () {
+					this.style.transform = "translateY(0) scale(1)";
+				});
+			});
+
+			// Glitch effect trigger
+			const glitchElement = document.querySelector(".glitch");
+			setInterval(() => {
+				glitchElement.style.animation = "none";
+				setTimeout(() => {
+					glitchElement.style.animation = "glitch 0.3s ease-in-out";
+				}, 100);
+			}, 5000);
+
+			// Console easter egg
+			console.log(`
+    ╔══════════════════════════════════════════════════════════════════════════════════════════════╗
+    ║                                                                                              ║
+    ║   ██████╗ ███████╗██╗   ██╗     ██████╗  █████╗ ███╗   ███╗███████╗██████╗                 ║
+    ║   ██╔══██╗██╔════╝██║   ██║    ██╔════╝ ██╔══██╗████╗ ████║██╔════╝██╔══██╗                ║
+    ║   ██║  ██║█████╗  ██║   ██║    ██║  ███╗███████║██╔████╔██║█████╗  ██████╔╝                ║
+    ║   ██║  ██║██╔══╝  ╚██╗ ██╔╝    ██║   ██║██╔══██║██║╚██╔╝██║██╔══╝  ██╔══██╗                ║
+    ║   ██████╔╝███████╗ ╚████╔╝     ╚██████╔╝██║  ██║██║ ╚═╝ ██║███████╗██║  ██║                ║
+    ║   ╚═════╝ ╚══════╝  ╚═══╝       ╚═════╝ ╚═╝  ╚═╝╚═╝     ╚═╝╚══════╝╚═╝  ╚═╝                ║
+    ║                                                                                              ║
+    ║   Welcome to my digital realm! 🚀                                                           ║
+    ║   You found the secret console message - you're clearly a fellow developer! 👨‍💻            ║
+    ║                                                                                              ║
+    ║   Feel free to explore the source code and see how this portfolio was crafted.             ║
+    ║   Built with pure HTML, CSS, and JavaScript - no frameworks needed! 💪                     ║
+    ║                                                                                              ║
+    ╚══════════════════════════════════════════════════════════════════════════════════════════════╝
+        `);
+
+			// Keyboard shortcuts
+			document.addEventListener("keydown", function (e) {
+				// Konami Code Easter Egg
+				const konamiCode = [
+					"ArrowUp",
+					"ArrowUp",
+					"ArrowDown",
+					"ArrowDown",
+					"ArrowLeft",
+					"ArrowRight",
+					"ArrowLeft",
+					"ArrowRight",
+					"KeyB",
+					"KeyA",
+				];
+
+				if (!window.konamiIndex) window.konamiIndex = 0;
+
+				if (e.code === konamiCode[window.konamiIndex]) {
+					window.konamiIndex++;
+					if (window.konamiIndex === konamiCode.length) {
+						// Activate super mode
+						document.body.style.animation =
+							"rainbow-bg 1s infinite";
+						setTimeout(() => {
+							document.body.style.animation = "";
+							alert(
+								"🎮 CHEAT CODE ACTIVATED! 🎮\nYou unlocked the secret developer mode!"
+							);
+						}, 3000);
+						window.konamiIndex = 0;
+					}
+				} else {
+					window.konamiIndex = 0;
+				}
+			});
+
+			// Performance monitoring
+			window.addEventListener("load", function () {
+				const loadTime = performance.now();
+				console.log(`🚀 Portfolio loaded in ${loadTime.toFixed(2)}ms`);
+			});
+		</script>
+
+		<style>
+			@keyframes rainbow-bg {
+				0% {
+					background-color: #ff0000;
+				}
+				16.66% {
+					background-color: #ff8000;
+				}
+				33.33% {
+					background-color: #ffff00;
+				}
+				50% {
+					background-color: #00ff00;
+				}
+				66.66% {
+					background-color: #0080ff;
+				}
+				83.33% {
+					background-color: #8000ff;
+				}
+				100% {
+					background-color: #ff0080;
+				}
+			}
+
+			/* Additional hover effects */
+			.contact-item {
+				position: relative;
+				overflow: hidden;
+			}
+
+			.contact-item::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: -100%;
+				width: 100%;
+				height: 100%;
+				background: linear-gradient(
+					90deg,
+					transparent,
+					rgba(255, 0, 128, 0.2),
+					transparent
+				);
+				transition: left 0.5s ease;
+			}
+
+			.contact-item:hover::before {
+				left: 100%;
+			}
+
+			/* Pulse animation for skill progress bars */
+			.skill-progress::after {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				background: linear-gradient(
+					90deg,
+					transparent,
+					rgba(255, 255, 255, 0.3),
+					transparent
+				);
+				animation: skill-shine 2s infinite;
+			}
+
+			@keyframes skill-shine {
+				0% {
+					transform: translateX(-100%);
+				}
+				100% {
+					transform: translateX(100%);
+				}
+			}
+
+			/* Enhanced terminal cursor */
+			.terminal-line:last-child::after {
+				content: "▋";
+				color: var(--neon-green);
+				animation: blink-cursor 1s infinite;
+				margin-left: 0.5rem;
+			}
+
+			/* Improved mobile responsiveness */
+			@media (max-width: 480px) {
+				.container {
+					padding: 0 1rem;
+				}
+
+				.skills-grid,
+				.projects-grid,
+				.contact-info {
+					grid-template-columns: 1fr;
+				}
+
+				.terminal-content {
+					font-size: 0.8rem;
+				}
+
+				.ascii-art {
+					font-size: 0.4rem;
+				}
+			}
+
+			/* Scroll indicator */
+			.scroll-indicator {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 3px;
+				background: linear-gradient(
+					90deg,
+					var(--neon-green),
+					var(--neon-blue),
+					var(--neon-purple)
+				);
+				transform-origin: left;
+				z-index: 9999;
+			}
+		</style>
+	</body>
+</html>
